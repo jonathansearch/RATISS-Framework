@@ -123,6 +123,16 @@ Les artefacts qui n’entrent pas dans la chaîne principale ne sont pas effacé
 
 ![Preuve de concept des audits externes](docs/img/poc-externe-2026-09-13.png)
 
+### Trois visualisations 3D Framework
+
+![Matrice 3D des audits externes](docs/img/graphe-3d-01-matrice-audits.png)
+
+![Architecture 3D des deux couches](docs/img/graphe-3d-02-deux-couches.png)
+
+![Chaîne 3D de vérification](docs/img/graphe-3d-03-chaine-verification.png)
+
+> Ces graphiques 3D présentent la structure et les résultats documentés du protocole. Ils ne créent aucune nouvelle mesure scientifique.
+
 À l’état **2026-09-13**, les deux couches sont opérationnelles. Le juge analyse GTT en intégration continue à chaque push par dépendance Git scellée, au moyen de manifestes comparés à `SEALS.json`.
 
 | Élément GTT | Valeur | Vérification |
