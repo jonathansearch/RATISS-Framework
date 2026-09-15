@@ -9,6 +9,8 @@
 
 ![RATISS Framework](docs/img/logo-ratiss-labs.png)
 
+![Bannière RATISS Framework](docs/img/banniere-framework.png)
+
 ---
 
 ## 1. Positionnement
@@ -60,6 +62,8 @@ La méthode repose sur une loi opérationnelle unique : un chiffre ou une affirm
 Ces règles sont transcrites dans les modules `verify`, `seal`, `journal`, `bounds`, `ids`, `report` et `__main__`.
 
 ## 5. Composants techniques
+
+![Méthode de la loi unique](docs/img/methode-loi-unique.png)
 
 ### `verify` — intégrité et formes
 
@@ -114,6 +118,10 @@ La couche 1 juge la couche 2. Cette direction est un élément de gouvernance te
 Les artefacts qui n’entrent pas dans la chaîne principale ne sont pas effacés par défaut. Ils sont gelés, datés et documentés dans les mécanismes de provenance et d’orphelins.
 
 ## 8. État de RATISS-LABS-GTT
+
+![Architecture à deux couches](docs/img/architecture-deux-couches.png)
+
+![Preuve de concept des audits externes](docs/img/poc-externe-2026-09-13.png)
 
 À l’état **2026-09-13**, les deux couches sont opérationnelles. Le juge analyse GTT en intégration continue à chaque push par dépendance Git scellée, au moyen de manifestes comparés à `SEALS.json`.
 
