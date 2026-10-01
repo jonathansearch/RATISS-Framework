@@ -56,10 +56,11 @@ La méthode repose sur une loi opérationnelle unique : un chiffre ou une affirm
 | **R5** | Les prompts et paramètres sont scellés et hashés dans chaque run ; toute modification après mesure devient une déviation journalisée. |
 | **R6** | Les bras expérimentaux sont séparés du chemin critique ; le verdict repose sur une ablation avec et sans modification, jamais sur une intuition. |
 | **R7** | Aucune affirmation publique n’est publiée sans qu’un tiers puisse la reproduire en une commande. |
+| **R8** | On ne mesure que ce qui déborde du script : un instrument ne compte que la part du signal que le montage n’impose pas lui-même (« l’instrument du reste »), validée par un témoin sans perturbation dont le plancher est quasi nul. |
 | Hérité 1 | Une simulation n’est pas une exécution matérielle. |
 | Hérité 2 | Un identifiant enregistré n’est pas une revalidation en temps réel. |
 
-Ces règles sont transcrites dans les modules `verify`, `seal`, `journal`, `bounds`, `ids`, `report` et `__main__`.
+Ces règles sont transcrites dans les modules `verify`, `seal`, `journal`, `bounds`, `ids`, `report`, `residual` (R8) et `__main__`.
 
 ## 5. Composants techniques
 
