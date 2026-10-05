@@ -1,206 +1,206 @@
 # RATISS-Framework
 
-## Protocole d’audit scientifique exécutable
+## Executable scientific audit protocol
 
 [![CI](https://github.com/jonathansearch/RATISS-Framework/actions/workflows/tests.yml/badge.svg)](https://github.com/jonathansearch/RATISS-Framework/actions/workflows/tests.yml)
-![Tests](docs/badges/tests.svg) ![Dépendances](docs/badges/stdlib.svg) ![Licence](docs/badges/license.svg) ![R7](docs/badges/r7.svg)
+![Tests](docs/badges/tests.svg) ![Dependencies](docs/badges/stdlib.svg) ![License](docs/badges/license.svg) ![R7](docs/badges/r7.svg)
 
-> **RATISS-Framework** est la couche de méthode et de contrôle de RATISS Labs. Il fournit un protocole d’audit exécutable en Python standard, fondé sur les hashes scellés, les journaux de déviations chaînés, les bornes de plausibilité physique, la résolution d’identifiants et une commande unique de rejeu des verdicts publiés.
+> **RATISS-Framework** is the method and control layer of RATISS Labs. It provides an audit protocol executable in standard Python, based on sealed hashes, chained deviation journals, physical plausibility bounds, identifier resolution and a single command to replay the published verdicts.
 
 ![RATISS Framework](docs/img/logo-ratiss-labs.png)
 
-![Bannière RATISS Framework](docs/img/banniere-framework.png)
+![RATISS Framework banner](docs/img/banniere-framework.png)
 
 ---
 
-## 1. Positionnement
+## 1. Positioning
 
-RATISS-Framework transforme des exigences d’intégrité scientifique en contrôles exécutables. Le dépôt ne remplace pas l’expertise scientifique et ne déclare pas qu’un résultat est vrai par simple conformité technique. Il vérifie plutôt que les éléments annoncés sont identifiables, scellés, rejouables et correctement documentés.
+RATISS-Framework turns scientific integrity requirements into executable controls. The repository does not replace scientific expertise and does not declare a result true by mere technical compliance. It rather verifies that the announced elements are identifiable, sealed, replayable and correctly documented.
 
-Le framework constitue la **couche 1** de l’écosystème RATISS Labs. Il juge notamment le dépôt [RATISS-LABS-GTT](https://github.com/jonathansearch/RATISS-LABS-GTT), qui constitue la couche 2 expérimentale. Cette dépendance est scellée et vérifiée en intégration continue.
+The framework constitutes **layer 1** of the RATISS Labs ecosystem. It notably judges the [RATISS-LABS-GTT](https://github.com/jonathansearch/RATISS-LABS-GTT) repository, which constitutes the experimental layer 2. This dependency is sealed and verified in continuous integration.
 
-> **Règle R7 :** aucune affirmation publique sans qu’un tiers puisse la reproduire en une commande.
+> **Rule R7:** no public claim without a third party being able to reproduce it in one command.
 
-Le projet utilise exclusivement la bibliothèque standard Python pour son chemin critique. Cette contrainte réduit le nombre de dépendances nécessaires à l’audit et facilite la reproduction dans des environnements contrôlés.
+The project uses exclusively the Python standard library for its critical path. This constraint reduces the number of dependencies needed for the audit and makes reproduction easier in controlled environments.
 
-## 2. Résumé exécutif
+## 2. Executive summary
 
-RATISS-Framework regroupe six fonctions centrales : la vérification d’intégrité par hash, le scellement de manifestes, le journal chaîné des déviations, l’évaluation de bornes de plausibilité physique, la résolution d’identifiants et la génération de rapports d’audit sans sections vides.
+RATISS-Framework gathers six central functions: hash integrity verification, manifest sealing, chained deviation journal, physical plausibility bounds evaluation, identifier resolution and generation of audit reports with no empty sections.
 
-Le protocole sépare la construction d’un artefact de son évaluation. L’équipe de création peut produire, modifier et tester les composants. L’équipe Rouge applique ensuite le juge et conserve un droit de veto sur la publication. Un résultat conforme au protocole est donc un résultat documenté, vérifiable et rejouable selon le périmètre annoncé ; il ne constitue pas automatiquement une validation scientifique indépendante.
+The protocol separates the construction of an artifact from its evaluation. The creation team can produce, modify and test the components. The Red team then applies the judge and keeps a veto right over publication. A result compliant with the protocol is therefore a documented, verifiable and replayable result within the announced scope; it does not automatically constitute an independent scientific validation.
 
-## 3. Laboratoire et gouvernance
+## 3. Laboratory and governance
 
-**RATISS Labs** est un laboratoire indépendant basé à Yaoundé, au Cameroun. Le laboratoire audite des artefacts publics de recherche en vérifiant leurs hashes, leurs identifiants, leur plausibilité physique et leur reproductibilité. Chaque rapport est publié avec une annexe de reproduction.
+**RATISS Labs** is an independent laboratory based in Yaoundé, Cameroon. The laboratory audits public research artifacts by verifying their hashes, their identifiers, their physical plausibility and their reproducibility. Every report is published with a reproduction annex.
 
-Jonathan Evina est fondateur et chef de laboratoire. Son identifiant ORCID est [0009-0000-4092-5313](https://orcid.org/0009-0000-4092-5313) et son compte GitHub de référence est [jonathansearch](https://github.com/jonathansearch).
+Jonathan Evina is founder and laboratory chief. His ORCID identifier is [0009-0000-4092-5313](https://orcid.org/0009-0000-4092-5313) and his reference GitHub account is [jonathansearch](https://github.com/jonathansearch).
 
-Le laboratoire fonctionne avec deux responsabilités distinctes :
+The laboratory operates with two distinct responsibilities:
 
-| Fonction | Responsabilité | Autorité de publication |
+| Function | Responsibility | Publication authority |
 |---|---|---|
-| Création | construction, exécution et préparation des artefacts | aucune autorité de publication |
-| Équipe Rouge | vérification indépendante, certification ou déclaration de divergence | veto absolu |
+| Creation | construction, execution and preparation of artifacts | no publication authority |
+| Red team | independent verification, certification or divergence statement | absolute veto |
 
-L’auditeur conserve la priorité sur le chef de laboratoire lorsqu’un écart est détecté. Cette règle vise à empêcher qu’un impératif de calendrier ou de présentation ne remplace une vérification.
+The auditor keeps priority over the laboratory chief whenever a gap is detected. This rule aims to prevent a schedule or presentation imperative from replacing a verification.
 
-Pour les demandes d’audit, le dépôt public associé est [`ratiss-audit-public`](https://github.com/jonathansearch/ratiss-audit-public). Le contact professionnel est `jonathan.ratisslabs@zohomail.com`.
+For audit requests, the associated public repository is [`ratiss-audit-public`](https://github.com/jonathansearch/ratiss-audit-public). The professional contact is `jonathan.ratisslabs@zohomail.com`.
 
-## 4. La méthode et ses règles
+## 4. The method and its rules
 
-La méthode repose sur une loi opérationnelle unique : un chiffre ou une affirmation publiés doivent être rattachés à un calcul, à des paramètres et à une preuve de reproduction.
+The method rests on a single operational law: a published number or claim must be attached to a computation, to parameters and to a proof of reproduction.
 
-| Règle | Énoncé opérationnel |
+| Rule | Operational statement |
 |---|---|
-| **R4** | Le raisonnement conceptuel est toujours autorisé ; un chiffre est publié seulement s’il a été calculé avec ses paramètres et son hash. |
-| **R5** | Les prompts et paramètres sont scellés et hashés dans chaque run ; toute modification après mesure devient une déviation journalisée. |
-| **R6** | Les bras expérimentaux sont séparés du chemin critique ; le verdict repose sur une ablation avec et sans modification, jamais sur une intuition. |
-| **R7** | Aucune affirmation publique n’est publiée sans qu’un tiers puisse la reproduire en une commande. |
-| **R8** | On ne mesure que ce qui déborde du script : un instrument ne compte que la part du signal que le montage n’impose pas lui-même (« l’instrument du reste »), validée par un témoin sans perturbation dont le plancher est quasi nul. |
-| Hérité 1 | Une simulation n’est pas une exécution matérielle. |
-| Hérité 2 | Un identifiant enregistré n’est pas une revalidation en temps réel. |
+| **R4** | Conceptual reasoning is always allowed; a number is published only if it has been computed with its parameters and its hash. |
+| **R5** | Prompts and parameters are sealed and hashed in every run; any modification after measurement becomes a journaled deviation. |
+| **R6** | Experimental arms are separated from the critical path; the verdict rests on an ablation with and without the modification, never on an intuition. |
+| **R7** | No public claim is published without a third party being able to reproduce it in one command. |
+| **R8** | We only measure what overflows the script: an instrument only counts the part of the signal that the setup does not impose itself ("the instrument of the remainder"), validated by a control without perturbation whose floor is quasi zero. |
+| Inherited 1 | A simulation is not a hardware execution. |
+| Inherited 2 | A registered identifier is not a real-time revalidation. |
 
-Ces règles sont transcrites dans les modules `verify`, `seal`, `journal`, `bounds`, `ids`, `report`, `residual` (R8) et `__main__`.
+These rules are transcribed into the `verify`, `seal`, `journal`, `bounds`, `ids`, `report`, `residual` (R8) and `__main__` modules.
 
-## 5. Composants techniques
+## 5. Technical components
 
-![Méthode de la loi unique](docs/img/methode-loi-unique.png)
+![Method of the single law](docs/img/methode-loi-unique.png)
 
-### `verify` — intégrité et formes
+### `verify` — integrity and shapes
 
-Le module `verify` compare un artefact servi à un hash attendu et vérifie les formes nécessaires à l’audit. Il permet d’associer une valeur publiée à des octets effectivement reçus plutôt qu’à une simple adresse ou à une promesse de disponibilité.
+The `verify` module compares a served artifact to an expected hash and verifies the shapes needed for the audit. It allows attaching a published value to bytes actually received rather than to a mere address or an availability promise.
 
-### `seal` — manifestes scellés
+### `seal` — sealed manifests
 
-Le module `seal` construit et vérifie les manifestes. Le scellement rend les paramètres contrôlables avant l’exécution et permet de détecter une modification intervenue après la mesure.
+The `seal` module builds and verifies the manifests. Sealing makes the parameters controllable before execution and allows detecting a modification that occurred after the measurement.
 
-### `journal` — déviations chaînées
+### `journal` — chained deviations
 
-Le module `journal` conserve les déviations dans une chaîne vérifiable. Chaque événement s’inscrit dans la continuité du précédent afin que l’ordre et l’intégrité de l’historique puissent être contrôlés.
+The `journal` module keeps deviations in a verifiable chain. Each event is written in continuity with the previous one so that the order and integrity of the history can be controlled.
 
-### `bounds` — plausibilité physique
+### `bounds` — physical plausibility
 
-Le module `bounds` applique des contrôles de bornes. Il comprend notamment la borne de Tsirelson et vérifie qu’une valeur annoncée reste dans le domaine attendu par le contrat physique déclaré.
+The `bounds` module applies bounds checks. It notably includes the Tsirelson bound and verifies that an announced value stays within the domain expected by the declared physical contract.
 
-### `ids` — identifiants persistants
+### `ids` — persistent identifiers
 
-Le module `ids` résout les DOI et autres identifiants enregistrés. Il distingue un identifiant existant d’une revalidation en temps réel du contenu associé.
+The `ids` module resolves DOIs and other registered identifiers. It distinguishes an existing identifier from a real-time revalidation of the associated content.
 
-### `report` — rapports complets
+### `report` — complete reports
 
-Le module `report` génère des rapports d’audit structurés. Une section vide ou un élément non documenté ne doit pas être confondu avec une validation.
+The `report` module generates structured audit reports. An empty section or an undocumented element must not be confused with a validation.
 
-### `__main__` — commande d’exécution
+### `__main__` — execution command
 
-Le point d’entrée `__main__` rassemble les contrôles afin de proposer une interface reproductible et explicite.
+The `__main__` entry point gathers the controls to offer a reproducible and explicit interface.
 
-## 6. Utilisation en ligne de commande
+## 6. Command-line usage
 
-Les commandes suivantes illustrent les principaux contrôles :
+The following commands illustrate the main controls:
 
 ```bash
-python -m ratiss audit --url <url> --sha256 <hash>     # intégrité d'un artefact servi
-python -m ratiss audit-zenodo --record <id> --file <f> # checksum publié vs octets servis
-python -m ratiss doi <doi>                             # résolution d'identifiant (Hérité 2)
-python -m ratiss chsh <valeur>                         # borne de Tsirelson |S| ≤ 2√2
+python -m ratiss audit --url <url> --sha256 <hash>     # integrity of a served artifact
+python -m ratiss audit-zenodo --record <id> --file <f> # published checksum vs served bytes
+python -m ratiss doi <doi>                             # identifier resolution (Inherited 2)
+python -m ratiss chsh <value>                          # Tsirelson bound |S| ≤ 2√2
 ```
 
-Les paramètres doivent être déclarés avant l’exécution. Les valeurs produites sont ensuite associées aux manifestes, aux journaux et aux reçus correspondants.
+The parameters must be declared before execution. The produced values are then associated with the corresponding manifests, journals and receipts.
 
-## 7. Architecture de l’écosystème RATISS
+## 7. Architecture of the RATISS ecosystem
 
-L’écosystème repose sur deux produits complémentaires :
+The ecosystem rests on two complementary products:
 
-- **Couche 1 — RATISS-Framework :** protocole d’audit exécutable, juge, scellement, provenance et rapports.
-- **Couche 2 — RATISS-LABS-GTT :** plateforme expérimentale en neuf couches consacrée à la topologie, aux modèles du monde, à la simulation et aux visualisations.
+- **Layer 1 — RATISS-Framework:** executable audit protocol, judge, sealing, provenance and reports.
+- **Layer 2 — RATISS-LABS-GTT:** experimental platform in nine layers dedicated to topology, world models, simulation and visualizations.
 
-La couche 1 juge la couche 2. Cette direction est un élément de gouvernance technique : les résultats de GTT doivent pouvoir être rejoués et évalués par un mécanisme distinct de la couche qui les produit.
+Layer 1 judges layer 2. This direction is a technical governance element: GTT's results must be replayable and evaluable by a mechanism distinct from the layer that produces them.
 
-Les artefacts qui n’entrent pas dans la chaîne principale ne sont pas effacés par défaut. Ils sont gelés, datés et documentés dans les mécanismes de provenance et d’orphelins.
+Artifacts that do not enter the main chain are not erased by default. They are frozen, dated and documented in the provenance and orphans mechanisms.
 
-## 8. État de RATISS-LABS-GTT
+## 8. State of RATISS-LABS-GTT
 
-![Architecture à deux couches](docs/img/architecture-deux-couches.png)
+![Two-layer architecture](docs/img/architecture-deux-couches.png)
 
-![Preuve de concept des audits externes](docs/img/poc-externe-2026-09-13.png)
+![Proof of concept of external audits](docs/img/poc-externe-2026-09-13.png)
 
-### Trois visualisations 3D Framework
+### Three Framework 3D visualizations
 
-![Matrice 3D des audits externes](docs/img/graphe-3d-01-matrice-audits.png)
+![3D matrix of external audits](docs/img/graphe-3d-01-matrice-audits.png)
 
-![Architecture 3D des deux couches](docs/img/graphe-3d-02-deux-couches.png)
+![3D architecture of the two layers](docs/img/graphe-3d-02-deux-couches.png)
 
-![Chaîne 3D de vérification](docs/img/graphe-3d-03-chaine-verification.png)
+![3D verification chain](docs/img/graphe-3d-03-chaine-verification.png)
 
-> Ces graphiques 3D présentent la structure et les résultats documentés du protocole. Ils ne créent aucune nouvelle mesure scientifique.
+> These 3D graphics present the documented structure and results of the protocol. They create no new scientific measurement.
 
-À l’état **2026-09-13**, les deux couches sont opérationnelles. Le juge analyse GTT en intégration continue à chaque push par dépendance Git scellée, au moyen de manifestes comparés à `SEALS.json`.
+As of **2026-09-13**, the two layers are operational. The judge analyzes GTT in continuous integration at every push through a sealed Git dependency, using manifests compared against `SEALS.json`.
 
-| Élément GTT | Valeur | Vérification |
+| GTT element | Value | Verification |
 |---|---:|---|
-| Phases construites | 1–7 (relais Rouge divulgué, auditeur ⏳ EN ATTENTE) | `docs/AUDIT_TRAIL.md` de GTT |
-| Tests | 108 passed, bibliothèque standard seule | CI `gtt.yml` |
-| Juge de ce dépôt | exit 0 sur GTT | job CI `judge` |
-| Run externe réel LeWM/TwoRooms | delta **0.626131533384**, APPROVED | certification GTT byte-identique |
-| Rejeu indépendant | kit en une commande fourni | `docs/AUDIT-INDEPENDANT-KIT.md` de GTT |
+| Built phases | 1–7 (Red relay disclosed, auditor ⏳ PENDING) | GTT's `docs/AUDIT_TRAIL.md` |
+| Tests | 108 passed, standard library only | CI `gtt.yml` |
+| Judge of this repository | exit 0 on GTT | CI job `judge` |
+| Real external run LeWM/TwoRooms | delta **0.626131533384**, APPROVED | byte-identical GTT certification |
+| Independent replay | one-command kit provided | GTT's `docs/AUDIT-INDEPENDANT-KIT.md` |
 
-La méthode de ce dépôt n’affirme rien sur GTT que GTT ne puisse rejouer. Cette contrainte est le contrat entre les deux produits.
+This repository's method claims nothing about GTT that GTT cannot replay. This constraint is the contract between the two products.
 
-## 9. Preuve de concept — 10 runs externes
+## 9. Proof of concept — 10 external runs
 
-La preuve de concept du **2026-09-13** couvre plusieurs catégories de contrôles :
+The proof of concept of **2026-09-13** covers several categories of controls:
 
-| Plateforme | Cibles | Verdicts |
+| Platform | Targets | Verdicts |
 |---|---|---:|
-| Zenodo | 4 fichiers servis comparés aux checksums md5 publiés, dont un article de chimie de **1856** | 4 CONFORMES |
-| PyPI | wheels `openai` et `requests` comparées aux digests sha256 publiés | 2 CONFORMES |
-| DOI / Crossref | 3 identifiants réels dont la résolution est vérifiée | 3 RESOUT |
-| Contrôle négatif | digest `openai` appliqué à la wheel `requests` | **1 DIVERGENCE DÉTECTÉE** |
+| Zenodo | 4 served files compared to published md5 checksums, including a chemistry paper from **1856** | 4 COMPLIANT |
+| PyPI | `openai` and `requests` wheels compared to published sha256 digests | 2 COMPLIANT |
+| DOI / Crossref | 3 real identifiers with verified resolution | 3 RESOLVES |
+| Negative control | `openai` digest applied to the `requests` wheel | **1 DIVERGENCE DETECTED** |
 
-Le contrôle négatif est indispensable. Une méthode qui ne sait produire que des résultats conformes ne permet pas de distinguer une vérification effective d’un mécanisme toujours permissif.
+The negative control is indispensable. A method that only knows how to produce compliant results does not allow distinguishing an effective verification from an always-permissive mechanism.
 
-Le run spécial millénaire du **2026-09-13** examine la revendication OpenAI Navier–Stokes. Le papier est scellé, le dépôt Lean est scellé au commit et le registre Clay est consulté. Aucune résolution n’est décernée. Les préprints concurrents ne sont pas atteignables par identifiant stable. Les détails figurent dans [`proofs/POC-MILLENAIRE-2026-09-13.md`](proofs/POC-MILLENAIRE-2026-09-13.md), et la portée complète dans [`proofs/POC-EXTERNAL-AUDITS-2026-09-13.md`](proofs/POC-EXTERNAL-AUDITS-2026-09-13.md).
+The special millennial run of **2026-09-13** examines the OpenAI Navier–Stokes claim. The paper is sealed, the Lean repository is sealed at the commit and the Clay registry is consulted. No resolution is awarded. The competing preprints are not reachable by stable identifier. The details are in [`proofs/POC-MILLENAIRE-2026-09-13.md`](proofs/POC-MILLENAIRE-2026-09-13.md), and the full scope in [`proofs/POC-EXTERNAL-AUDITS-2026-09-13.md`](proofs/POC-EXTERNAL-AUDITS-2026-09-13.md).
 
-## 10. Installation et reproduction
+## 10. Installation and reproduction
 
-Le dépôt exige Python **>=3.9** et ne nécessite aucune dépendance externe pour les tests hors ligne.
+The repository requires Python **>=3.9** and needs no external dependency for the offline tests.
 
 ```bash
 git clone https://github.com/jonathansearch/RATISS-Framework.git
 cd RATISS-Framework
-python3 -m pytest -q                 # 47 tests hors-ligne, stdlib seule
-python3 -m pytest -q --run-network   # + 4 tests réseau marqués
-bash proofs/replay_poc.sh            # les 10 runs externes, une commande
+python3 -m pytest -q                 # 47 offline tests, stdlib only
+python3 -m pytest -q --run-network   # + 4 tagged network tests
+bash proofs/replay_poc.sh            # the 10 external runs, one command
 ```
 
-Les tests réseau doivent être exécutés dans un environnement autorisant les connexions sortantes. Les résultats doivent être interprétés avec les journaux et les rapports associés, et non comme une garantie générale indépendante du contexte d’exécution.
+The network tests must be executed in an environment allowing outgoing connections. The results must be interpreted with the associated journals and reports, and not as a general guarantee independent of the execution context.
 
-## 11. Provenance et traçabilité
+## 11. Provenance and traceability
 
-Chaque module porte sa ligne de provenance dans [`audit/PROVENANCE.md`](audit/PROVENANCE.md). Cette ligne précise le dépôt source, le commit source, l’existence éventuelle d’une réécriture ou d’une copie et l’auditeur nommé.
+Each module carries its provenance line in [`audit/PROVENANCE.md`](audit/PROVENANCE.md). This line specifies the source repository, the source commit, the possible existence of a rewrite or a copy and the named auditor.
 
-Un module sans provenance est refusé. Un auditeur prérempli est également refusé : la valeur reste **EN ATTENTE** jusqu’au visa de l’équipe Rouge conformément à la règle N2.
+A module without provenance is rejected. A pre-filled auditor is also rejected: the value stays **PENDING** until the Red team's visa according to rule N2.
 
-Le journal des déviations est conservé dans [`audit/journal-deviations.jsonl`](audit/journal-deviations.jsonl). Les rapports d’exemple sont disponibles dans [`examples/`](examples/) et les preuves de rejeu dans [`proofs/`](proofs/).
+The deviation journal is kept in [`audit/journal-deviations.jsonl`](audit/journal-deviations.jsonl). Sample reports are available in [`examples/`](examples/) and replay proofs in [`proofs/`](proofs/).
 
-## 12. Interprétation des verdicts
+## 12. Interpretation of verdicts
 
-Un verdict **CONFORME** signifie que le contrôle défini a été exécuté et que l’artefact satisfait le contrat technique annoncé pour ce contrôle. Il ne signifie pas que toutes les propriétés scientifiques possibles de l’artefact sont établies.
+A **COMPLIANT** verdict means that the defined control has been executed and that the artifact satisfies the announced technical contract for that control. It does not mean that all possible scientific properties of the artifact are established.
 
-Un verdict **RESOUT** signifie que l’identifiant a été résolu selon le mécanisme prévu. Il ne signifie pas que le contenu a été revalidé expérimentalement.
+A **RESOLVES** verdict means that the identifier has been resolved according to the intended mechanism. It does not mean that the content has been experimentally revalidated.
 
-Une **DIVERGENCE** est un résultat utile. Elle indique que l’artefact reçu ne correspond pas au hash ou à la condition attendue. La conserver dans le rapport protège l’intégrité du processus.
+A **DIVERGENCE** is a useful result. It indicates that the received artifact does not match the expected hash or condition. Keeping it in the report protects the integrity of the process.
 
-## 13. Licence et citation
+## 13. License and citation
 
-Le projet est distribué sous licence MIT. Copyright (c) **2026 Jonathan Evina, RATISS Labs**. Consultez [`LICENSE`](LICENSE) pour le texte intégral et [`CITATION.cff`](CITATION.cff) pour les métadonnées de citation.
+The project is distributed under the MIT license. Copyright (c) **2026 Jonathan Evina, RATISS Labs**. See [`LICENSE`](LICENSE) for the full text and [`CITATION.cff`](CITATION.cff) for the citation metadata.
 
-## Références
+## References
 
-[1]: https://github.com/jonathansearch/RATISS-Framework "RATISS-Framework — protocole d’audit scientifique exécutable"
-[2]: https://github.com/jonathansearch/RATISS-LABS-GTT "RATISS-LABS-GTT — plateforme expérimentale principale"
-[3]: https://orcid.org/0009-0000-4092-5313 "ORCID de Jonathan Evina"
+[1]: https://github.com/jonathansearch/RATISS-Framework "RATISS-Framework — executable scientific audit protocol"
+[2]: https://github.com/jonathansearch/RATISS-LABS-GTT "RATISS-LABS-GTT — main experimental platform"
+[3]: https://orcid.org/0009-0000-4092-5313 "ORCID of Jonathan Evina"
 
 ---
 
-**La crédibilité d’un résultat dépend aussi de la capacité à documenter ses limites, ses écarts et ses conditions de reproduction.**
+**The credibility of a result also depends on the ability to document its limits, its gaps and its reproduction conditions.**
